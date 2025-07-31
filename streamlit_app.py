@@ -358,7 +358,7 @@ class FashionTrendApp:
                         y='Mentions',
                         title="Top Fabrics (Web)",
                         color='Mentions',
-                        color_continuous_scale='gold'
+                        color_continuous_scale='sunset'
                     )
                     fig.update_layout(xaxis_tickangle=-45, height=300)
                     st.plotly_chart(fig, use_container_width=True)
