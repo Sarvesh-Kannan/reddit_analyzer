@@ -6,11 +6,15 @@ load_dotenv()
 class Config:
     # Reddit API Configuration
     REDDIT_CLIENT_ID = 'PBSIhI4MnvL2gTGjnGF5Rg'
-    REDDIT_CLIENT_SECRET = '9vPsmX51DvXm0Lfz7eZ2KnkCEgR7WA'
+    REDDIT_CLIENT_SECRET = '9vPsmX51DvXm0Lfz7eZ2KnxCEgR7WA'
     REDDIT_USERNAME = 'Mindless-Call8360'
     REDDIT_PASSWORD = 'NALAGOLDEN'
     REDDIT_USER_AGENT = 'fashion-trend-analyzer-india/1.0.0'
-    
+
+    # Serper API Configuration
+    SERPER_API_KEY = 'b50bc7b777affe50d513b469428bc84c78713408'
+    SERPER_BASE_URL = 'https://google.serper.dev/search'
+
     # India-centric Fashion Subreddits
     FASHION_SUBREDDITS = [
         'IndianFashionAddicts',
@@ -20,126 +24,93 @@ class Config:
         'TwoXIndia',
         'IndianSkincareAddicts',
         'IndianMakeupAddicts',
-        'streetwear',  # Global but relevant for Indian streetwear
-        'fashion',     # Global fashion trends
-        'femalefashionadvice'  # Global but useful for Indian women
+        'streetwear',
+        'fashion',
+        'femalefashionadvice'
     ]
-    
-    # Indian Fashion Keywords and Categories
+
+    # India-centric Fashion Keywords
     INDIAN_FASHION_KEYWORDS = {
-        'traditional': [
-            'saree', 'salwar', 'kameez', 'lehenga', 'anarkali', 'kurta', 'dhoti', 'mundu',
-            'ghagra', 'choli', 'dupatta', 'pallu', 'pallav', 'zari', 'zardosi', 'embroidery',
-            'bandhani', 'ikat', 'block_print', 'ajrakh', 'kalamkari', 'phulkari', 'chikankari'
+        'traditional_wear': [
+            'saree', 'salwar kameez', 'lehenga', 'anarkali', 'kurti', 'dupatta',
+            'ghagra', 'choli', 'dhoti', 'kurta', 'pajama', 'dhoti kurta',
+            'bandhgala', 'sherwani', 'jodhpuri', 'achkan', 'angarkha'
         ],
-        'modern_indian': [
-            'indian_western', 'fusion_wear', 'contemporary_indian', 'modern_saree',
-            'indian_casual', 'ethnic_casual', 'indian_formal', 'indian_party_wear'
+        'modern_fusion': [
+            'fusion wear', 'indian western', 'contemporary indian', 'modern indian',
+            'ethnic fusion', 'indian streetwear', 'desi streetwear', 'indian casual',
+            'modern traditional', 'indian contemporary'
         ],
         'indian_brands': [
-            'fabindia', 'anita_dongre', 'sabyasachi', 'manish_malhotra', 'tarun_tahiliani',
-            'rohit_bal', 'satya_paul', 'w_for_woman', 'biba', 'global_desai',
-            'masaba', 'payal_khandwala', 'ridhi_mehra', 'suket_dhir', 'abraham_thakore'
+            'fabindia', 'anita dongre', 'sabyasachi', 'manish malhotra', 'tarun tahiliani',
+            'rohit bal', 'abujani sandeep khosla', 'masaba', 'payal singhal',
+            'ridhi mehta', 'amit aggarwal', 'gaurav gupta', 'falguni shane peacock'
         ],
-        'indian_styles': [
-            'indian_streetwear', 'desi_aesthetic', 'indian_minimalist', 'indian_bohemian',
-            'indian_preppy', 'indian_gothic', 'indian_vintage', 'indian_retro'
+        'fabrics_materials': [
+            'silk', 'cotton', 'linen', 'khadi', 'chanderi', 'maheshwari', 'banarasi',
+            'kanjeevaram', 'mangalgiri', 'ikkat', 'bandhani', 'block print',
+            'ajrakh', 'kalamkari', 'chikankari', 'zardozi', 'embroidery'
         ],
-        'indian_accessories': [
-            'jhumka', 'kundan', 'polki', 'meenakari', 'thewa', 'lac_bangles',
-            'indian_jewelry', 'traditional_jewelry', 'indian_bags', 'indian_footwear',
-            'kolhapuri', 'mojari', 'jutti', 'indian_scarves', 'indian_belts'
+        'accessories': [
+            'jewelry', 'earrings', 'necklace', 'bangles', 'anklets', 'nose ring',
+            'mangalsutra', 'payal', 'jhumka', 'tikka', 'maang tikka', 'haar',
+            'kamarband', 'baju band', 'choker', 'statement necklace'
         ],
-        'indian_colors': [
-            'indian_red', 'saffron', 'turmeric_yellow', 'mehendi_green', 'indigo',
-            'rose_pink', 'marigold', 'lotus_pink', 'peacock_blue', 'mango_yellow'
+        'regional_styles': [
+            'punjabi suit', 'gujarati chaniya choli', 'bengali saree', 'tamil silk',
+            'kerala mundu', 'kashmiri phiran', 'rajasthani ghagra', 'maharashtrian nauvari',
+            'odisha ikat', 'assam mekhela', 'manipuri phanek', 'nagaland shawl'
         ],
-        'indian_fabrics': [
-            'silk', 'cotton', 'khadi', 'linen', 'wool', 'jute', 'bamboo_fabric',
-            'banana_fiber', 'lotus_fiber', 'organic_cotton', 'handloom', 'powerloom'
+        'occasions': [
+            'wedding wear', 'festival wear', 'party wear', 'casual wear', 'office wear',
+            'traditional wear', 'bridal wear', 'groom wear', 'reception wear',
+            'mehendi wear', 'sangeet wear', 'haldi wear'
         ]
     }
-    
-    # Indian Regions for Analysis
+
+    # Indian Regions for Regional Analysis
     INDIAN_REGIONS = {
-        'North_India': ['delhi', 'punjab', 'haryana', 'rajasthan', 'uttar_pradesh', 'himachal'],
-        'South_India': ['karnataka', 'tamil_nadu', 'kerala', 'andhra_pradesh', 'telangana'],
-        'East_India': ['west_bengal', 'bihar', 'odisha', 'jharkhand', 'assam'],
-        'West_India': ['maharashtra', 'gujarat', 'goa', 'madhya_pradesh'],
-        'Central_India': ['chhattisgarh', 'madhya_pradesh'],
-        'Northeast_India': ['assam', 'manipur', 'meghalaya', 'nagaland', 'tripura']
+        'North_India': ['punjab', 'haryana', 'delhi', 'uttar pradesh', 'rajasthan', 'himachal pradesh', 'jammu kashmir', 'uttarakhand', 'chandigarh'],
+        'South_India': ['tamil nadu', 'karnataka', 'kerala', 'andhra pradesh', 'telangana', 'puducherry'],
+        'West_India': ['maharashtra', 'gujarat', 'goa', 'dadra nagar haveli', 'daman diu'],
+        'East_India': ['west bengal', 'bihar', 'jharkhand', 'odisha', 'sikkim'],
+        'Central_India': ['madhya pradesh', 'chhattisgarh'],
+        'Northeast_India': ['assam', 'arunachal pradesh', 'manipur', 'meghalaya', 'mizoram', 'nagaland', 'tripura']
     }
-    
-    # Analysis Settings
-    MAX_POSTS_PER_SUBREDDIT = 100
-    MAX_COMMENTS_PER_POST = 50
-    SENTIMENT_THRESHOLD = 0.1
-    KEYWORD_MIN_FREQUENCY = 3
-    
+
     # Data Storage
     DATA_DIR = './data'
     OUTPUT_DIR = './output'
     CACHE_DIR = './cache'
-    
-    # LLM Settings (for local model integration)
-    LLM_MODEL_PATH = './models/deepseek-r1-8b'
+
+    # LLM Configuration
+    LLM_MODEL_NAME = 'deepseek-r1:8b'
     LLM_MAX_TOKENS = 2048
     LLM_TEMPERATURE = 0.7
-    
-    # Dashboard Settings
-    DASHBOARD_PORT = 8050
-    DASHBOARD_HOST = 'localhost'
-    
-    # Scheduling
-    SCRAPE_INTERVAL_HOURS = 6
-    ANALYSIS_INTERVAL_HOURS = 12
-    CLEANUP_INTERVAL_DAYS = 7
-    
-    # Indian Fashion Trends to Monitor
-    INDIAN_TREND_CATEGORIES = [
-        'Traditional Revival',
-        'Fusion Fashion',
-        'Sustainable Indian Fashion',
-        'Indian Streetwear',
-        'Wedding Fashion',
-        'Festival Fashion',
-        'Indian Workwear',
-        'Indian Casual Wear',
-        'Indian Luxury Fashion',
-        'Indian Fast Fashion'
+    LLM_TOP_P = 0.9
+
+    # Web Search Configuration
+    SEARCH_QUERIES = [
+        'Indian fashion trends 2024',
+        'trending Indian saree styles',
+        'popular Indian ethnic wear',
+        'Indian fusion fashion trends',
+        'traditional Indian clothing trends',
+        'Indian wedding fashion 2024',
+        'Indian streetwear trends',
+        'regional Indian fashion styles',
+        'Indian fashion influencers',
+        'Indian fashion brands trending'
     ]
-    
-    # Indian Fashion Events and Seasons
-    INDIAN_FASHION_SEASONS = {
-        'Wedding_Season': ['October', 'November', 'December', 'January', 'February'],
-        'Festival_Season': ['September', 'October', 'November'],
-        'Summer_Fashion': ['March', 'April', 'May', 'June'],
-        'Monsoon_Fashion': ['June', 'July', 'August', 'September'],
-        'Winter_Fashion': ['December', 'January', 'February']
-    }
-    
-    # Indian Fashion Price Points
-    INDIAN_PRICE_CATEGORIES = {
-        'Budget': 'Under ₹1000',
-        'Mid_Range': '₹1000-₹5000',
-        'Premium': '₹5000-₹20000',
-        'Luxury': 'Above ₹20000'
-    }
-    
+
+    # Analysis Configuration
+    MAX_POSTS_PER_SUBREDDIT = 500
+    TARGET_CORPUS_SIZE = 50000
+    SCRAPING_DELAY = 0.5
+    MAX_RETRIES = 3
+
     @classmethod
     def create_directories(cls):
-        """Create necessary directories if they don't exist"""
-        import os
-        for directory in [cls.DATA_DIR, cls.OUTPUT_DIR, cls.CACHE_DIR]:
-            os.makedirs(directory, exist_ok=True)
-    
-    @classmethod
-    def get_reddit_config(cls):
-        """Get Reddit configuration as dictionary"""
-        return {
-            'client_id': cls.REDDIT_CLIENT_ID,
-            'client_secret': cls.REDDIT_CLIENT_SECRET,
-            'username': cls.REDDIT_USERNAME,
-            'password': cls.REDDIT_PASSWORD,
-            'user_agent': cls.REDDIT_USER_AGENT
-        } 
+        os.makedirs(cls.DATA_DIR, exist_ok=True)
+        os.makedirs(cls.OUTPUT_DIR, exist_ok=True)
+        os.makedirs(cls.CACHE_DIR, exist_ok=True) 
